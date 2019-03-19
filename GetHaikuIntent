@@ -8,8 +8,8 @@ Data: Customize the data below as you please.
 
 const SKILL_NAME = "Haiku Reader";
 const GET_HAIKU_MESSAGE = "I have a haiku for you: ";
-const HELP_MESSAGE = "You can say tell me a haiku... or not.";
-const HELP_REPROMPT = "I have some awesome haikus in my repertoire. Just ask me to read one to you.";
+const HELP_MESSAGE = "You can say tell me a haiku... or ask me a haihu and I will say one.";
+const HELP_REPROMPT = "You can ask me for a haiku or ask. There are lots to hear so please keep asking.";
 const STOP_MESSAGE = "See you later!";
 
 // Each haiku is written within two single backticks and all haikus are seperated by commas.
