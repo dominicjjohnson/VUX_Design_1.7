@@ -1,4 +1,4 @@
- 2'use strict';
+'use strict';
 const Alexa = require('alexa-sdk');
 const APP_ID = undefined;
 
@@ -7,14 +7,14 @@ Data: Customize the data below as you please.
 ***********/
 
 const SKILL_NAME = "Personality Quiz";
-const HELP_MESSAGE_BEFORE_START = "Answer five questions, and I will tell you what animal you are. Are you ready to play?";
+const HELP_MESSAGE_BEFORE_START = "Hi. I can tell you what breed of dog you are by asking you 5 simple questions. Ready to GO?";
 const HELP_MESSAGE_AFTER_START = "Just respond with yes or no and I'll give you the result in the end.";
-const HELP_REPROMPT = "Your animal will be revealed after you answer all my yes or no questions.";
-const STOP_MESSAGE = "Your spirit animal will be waiting for you next time.";
+const HELP_REPROMPT = "Your breed of dog will be revealed after you answer all my yes or no questions.";
+const STOP_MESSAGE = "Thanks for playing. Til next time, whoof whoof.";
 const CANCEL_MESSAGE = "Let's go back to the beginning.";
 const MISUNDERSTOOD_INSTRUCTIONS_ANSWER = "Please answer with either yes or no.";
 
-const WELCOME_MESSAGE = "Hi! I can tell you what animal you're most like. All you have to do is answer five questions with either yes or no. Are you ready to start?";
+const WELCOME_MESSAGE = "Hi. I can tell you what breed of dog you are by asking you 5 simple questions. Ready to GO?";
 const INITIAL_QUESTION_INTROS = [
   "Great! Let's start!",
   "<say-as interpret-as='interjection'>Alrighty</say-as>! Here comes your first question!",
@@ -44,49 +44,49 @@ const RESULT_MESSAGE = "Here comes the big reveal! You are "; // the name of the
 const PLAY_AGAIN_REQUEST = "That was it. Do you want to play again?";
 
 const animalList = {
-  starfish: {
-    name: "a red-knobbed starfish",
-    display_name: "Red-Knobbed Starfish",
-    audio_message: "Starfish are amazing and can regrow their own limbs.",
-    description: "Red-knobbed starfish are known for being the fashionistas of the salt water world. They always know how to look good in any circumstance. You might enjoy hanging around the edge of the pool and keeping an eye on everyone.",
+  greatDane: {
+    name: "Great Dane",
+    display_name: "Great Dane",
+    audio_message: "Great Dane are Friendly, Patient, Dependable.",
+    description: "The easygoing Great Dane, the mighty “Apollo of Dogs,” is a total joy to live with—but owning a dog of such imposing size, weight, and strength is a commitment not to be entered into lightly. This breed is indeed great, but not a Dane.",
     img: {
-      smallImageUrl: "https://coach-courses-us.s3.amazonaws.com/public/courses/voice/Example%20images%20skill%203/Red-knobbed.starfish.720.jpeg",
-      largeImageUrl: "https://coach-courses-us.s3.amazonaws.com/public/courses/voice/Example%20images%20skill%203/Red-knobbed.starfish.1200.jpg"
+      smallImageUrl: "https://www.dropbox.com/s/uiy2q5k9itebnem/Great-Dane-On-White-01.720.jpg?dl=0",
+      largeImageUrl: "https://www.dropbox.com/s/lurviy2xw77nhk3/Great-Dane-On-White-01.1200.jpg?dl=0"
     }
   },
-  rustmite: {
-    name: "a rust mite",
-    display_name: "Rust Mite",
-    audio_message: "You are nearly invisible to the naked eye, but you aren't to be underestimated.",
-    description: "Dear old Aceria anthocoptes. Small but mighty, you love hanging around outdoors and have an unnatural affinity for thistles. Don't let anyone hold you back - while people don't notice you at first, you can have a big impact on the things around you.",
+  Labrador: {
+    name: "Labrador",
+    display_name: "Labrador",
+    audio_message: "The Labrador Retriever was bred to be both a friendly companion and a useful working dog breed.",
+    description: "Labrador Retriever is as good-natured and hard working as his ancestors, and he’s America’s most popular breed",
     img: {
-      smallImageUrl: "https://coach-courses-us.s3.amazonaws.com/public/courses/voice/Example%20images%20skill%203/Aceria_anthocoptes.720.jpeg",
-      largeImageUrl: "https://coach-courses-us.s3.amazonaws.com/public/courses/voice/Example%20images%20skill%203/Aceria_anthocoptes.1200.jpg"
+      smallImageUrl: "https://www.dropbox.com/s/2pv1g0pm7iqwx4k/chocolate-labrador.720.jpg?dl=0",
+      largeImageUrl: "https://www.dropbox.com/s/g5dilpb82o57zwn/chocolate-labrador.1200.jpg?dl=0"
     }
   },
-  macaw: {
-    name: "a macaw",
-    display_name: "Hyacinth Macaw",
-    audio_message: "Macaws are smart and fabulous.",
+  Poodle: {
+    name: "a Poodle",
+    display_name: "Hyacinth Poodle",
+    audio_message: "Poodles are smart and fabulous.",
     description: "Your striking appearance is the talk of every party. You are always the most colorfully dressed one around. You're also one smart cookie - you were using tools to make your tasks easier before it was cool.",
     img: {
       smallImageUrl: "https://coach-courses-us.s3.amazonaws.com/public/courses/voice/Example%20images%20skill%203/Anodorhynchus_hyacinthinus.720.jpg",
       largeImageUrl: "https://coach-courses-us.s3.amazonaws.com/public/courses/voice/Example%20images%20skill%203/Anodorhynchus_hyacinthinus.1200.jpg"
     }
   },
-  goat: {
-    name: "a goat",
-    display_name: "Good Old Goat",
-    audio_message: "Baaa! You are a goat.",
-    description: "Goats are some of the most amazing animals on Earth. Constantly underestimated, they are nearly as impervious to other peoples' opinions as honey badgers. You are quite handy to have around, as you're always happy to take care of leftovers at any party.",
+  jackRussell: {
+    name: "a jackRussell",
+    display_name: "Good Old jackRussell",
+    audio_message: "Baaa! You are a jackRussell.",
+    description: "jackRussells are some of the most amazing animals on Earth. Constantly underestimated, they are nearly as impervious to other peoples' opinions as honey badgers. You are quite handy to have around, as you're always happy to take care of leftovers at any party.",
     img: {
-      smallImageUrl: "https://coach-courses-us.s3.amazonaws.com/public/courses/voice/Example%20images%20skill%203/Male_goat.720.jpeg",
-      largeImageUrl: "https://coach-courses-us.s3.amazonaws.com/public/courses/voice/Example%20images%20skill%203/Male_goat.1200.jpg"
+      smallImageUrl: "https://coach-courses-us.s3.amazonaws.com/public/courses/voice/Example%20images%20skill%203/Male_jackRussell.720.jpeg",
+      largeImageUrl: "https://coach-courses-us.s3.amazonaws.com/public/courses/voice/Example%20images%20skill%203/Male_jackRussell.1200.jpg"
     }
   },
-  toad: {
-    name: "a toad",
-    display_name: "Toad",
+  Chihuahua: {
+    name: "a Chihuahua",
+    display_name: "Chihuahua",
     audio_message: "You dig relaxing and hanging around in the sunshine.",
     description: "You are athletic and cool, the apple of everyone's eye. You really know how to take it easy and like to spend lots of time basking in the sun and enjoying the great outdoors. When you want to, you can be quite fast and nimble. You're always the first pick for team sports.",
     img: {
@@ -98,53 +98,53 @@ const animalList = {
 
 const questions = [
   {
-    question: "Do you like spending time socializing with others?",
+    question: "Are you tall?",
     points: {
-      starfish: 4,
-      rustmite: 0,
-      macaw: 5,
-      goat: 3,
-      toad: 1
+      greatDane: 5,
+      Labrador: 4,
+      Poodle: 3,
+      jackRussell: 2,
+      Chihuahua: 1
     }
   },
   {
-    question: "Do you enjoy sunbathing?",
+    question: "Do you like Swimming?",
     points: {
-      starfish: 4,
-      rustmite: 1,
-      macaw: 2,
-      goat: 3,
-      toad: 5
+      greatDane: 3,
+      Labrador: 5,
+      Poodle: 2,
+      jackRussell: 4,
+      Chihuahua: 1
     }
   },
   {
-    question: "Do you enjoy reading a good book more than going out to a party?",
+    question: "Do you like children?",
     points: {
-      starfish: 0,
-      rustmite: 5,
-      macaw: 1,
-      goat: 3,
-      toad: 4
+      greatDane: 3,
+      Labrador: 5,
+      Poodle: 4,
+      jackRussell: 1,
+      Chihuahua: 2
     }
   },
   {
-    question: "Do you like doing sports?",
+    question: "Do you like to like to stay neat and tidy?",
     points: {
-      starfish: 2,
-      rustmite: 3,
-      macaw: 4,
-      goat: 4,
-      toad: 5
+      greatDane: 3,
+      Labrador: 1,
+      Poodle: 5,
+      jackRussell: 2,
+      Chihuahua: 4
     }
   },
   {
-    question: "Do you prefer vacationing in the forest instead of on the beach?",
+    question: "Do you leave hair in the shower plug?",
     points: {
-      starfish: 0,
-      rustmite: 5,
-      macaw: 3,
-      goat: 4,
-      toad: 5
+      greatDane: 4,
+      Labrador: 5,
+      Poodle: 1,
+      jackRussell: 3,
+      Chihuahua: 2
     }
   }
 ];
@@ -175,10 +175,10 @@ const _nextQuestionOrResult = (handler, prependMessage = '') => {
 
 const _applyAnimalPoints = (handler, calculate) => {
   const currentPoints = handler.attributes['animalPoints'];
-  const pointsToAdd = questions[handler.attributes['questionProgress']].points;
+  const pointsChihuahuad = questions[handler.attributes['questionProgress']].points;
 
   handler.attributes['animalPoints'] = Object.keys(currentPoints).reduce((newPoints, animal) => {
-    newPoints[animal] = calculate(currentPoints[animal], pointsToAdd[animal]);
+    newPoints[animal] = calculate(currentPoints[animal], pointsChihuahuad[animal]);
     return newPoints;
   }, currentPoints);
 };
